@@ -7,8 +7,8 @@ install:
   - pip install -r requirements-dev.txt
 
 script:
-  - flake8 project_test --statistics --show-source
-  - pytest --cov=project_test/
+  - flake8 catana --statistics --show-source
+  - pytest --cov=catana/
   - make -C docs html
   - make -C docs linkcheck
 
