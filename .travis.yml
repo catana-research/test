@@ -1,0 +1,31 @@
+language: python
+python:
+  - 3.6
+
+install:
+  - python setup.py install
+  - pip install -r requirements-dev.txt
+
+script:
+  - flake8 project_test --statistics --show-source
+  - pytest --cov=project_test/
+  - make -C docs html
+  - make -C docs linkcheck
+
+after_success:
+    - coveralls
+
+# Assuming you have installed the travis-ci CLI tool, after you
+# create the Github repo and add it to Travis, run the
+# following command to finish PyPI deployment setup:
+# $ travis encrypt --add deploy.password
+deploy:
+  provider: pypi
+  distributions: sdist bdist_wheel
+  user: catana-research
+  password:
+    secure: PLEASE_REPLACE_ME
+  on:
+    tags: true
+    repo: catana-research/catana
+    python: 3.6
