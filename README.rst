@@ -21,9 +21,3 @@ Catana
 
 * Free software: MIT license
 * Documentation: https://catana.readthedocs.io.
-
-
-Features
---------
-
-* TODO
